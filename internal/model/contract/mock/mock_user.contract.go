@@ -12,6 +12,7 @@ import (
 	request "github.com/bagastri07/mnc-technical-test-stage-two/internal/model/request"
 	response "github.com/bagastri07/mnc-technical-test-stage-two/internal/model/response"
 	gomock "github.com/golang/mock/gomock"
+	uuid "github.com/google/uuid"
 )
 
 // MockUserRepository is a mock of UserRepository interface.
@@ -37,7 +38,22 @@ func (m *MockUserRepository) EXPECT() *MockUserRepositoryMockRecorder {
 	return m.recorder
 }
 
-// FindByUsername mocks base method.
+// FindByID mocks base method.
+func (m *MockUserRepository) FindByID(ctx context.Context, ID uuid.UUID) (*entity.User, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FindByID", ctx, ID)
+	ret0, _ := ret[0].(*entity.User)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindByID indicates an expected call of FindByID.
+func (mr *MockUserRepositoryMockRecorder) FindByID(ctx, ID interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByID", reflect.TypeOf((*MockUserRepository)(nil).FindByID), ctx, ID)
+}
+
+// FindByPhoneNumber mocks base method.
 func (m *MockUserRepository) FindByPhoneNumber(ctx context.Context, username string) (*entity.User, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "FindByPhoneNumber", ctx, username)
@@ -46,8 +62,8 @@ func (m *MockUserRepository) FindByPhoneNumber(ctx context.Context, username str
 	return ret0, ret1
 }
 
-// FindByUsername indicates an expected call of FindByUsername.
-func (mr *MockUserRepositoryMockRecorder) FindByUsername(ctx, username interface{}) *gomock.Call {
+// FindByPhoneNumber indicates an expected call of FindByPhoneNumber.
+func (mr *MockUserRepositoryMockRecorder) FindByPhoneNumber(ctx, username interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByPhoneNumber", reflect.TypeOf((*MockUserRepository)(nil).FindByPhoneNumber), ctx, username)
 }
@@ -89,23 +105,23 @@ func (m *MockUserUseCase) EXPECT() *MockUserUseCaseMockRecorder {
 	return m.recorder
 }
 
-// GetInfo mocks base method.
-func (m *MockUserUseCase) GetInfo(ctx context.Context, req request.GetUserInfoReq) (*response.GetUserInfoResp, error) {
+// GetTransactions mocks base method.
+func (m *MockUserUseCase) GetTransactions(ctx context.Context, req request.GetUserTransactionsReq) ([]response.GetUserTransactionsResp, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetInfo", ctx, req)
-	ret0, _ := ret[0].(*response.GetUserInfoResp)
+	ret := m.ctrl.Call(m, "GetTransactions", ctx, req)
+	ret0, _ := ret[0].([]response.GetUserTransactionsResp)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetInfo indicates an expected call of GetInfo.
-func (mr *MockUserUseCaseMockRecorder) GetInfo(ctx, req interface{}) *gomock.Call {
+// GetTransactions indicates an expected call of GetTransactions.
+func (mr *MockUserUseCaseMockRecorder) GetTransactions(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetInfo", reflect.TypeOf((*MockUserUseCase)(nil).GetInfo), ctx, req)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransactions", reflect.TypeOf((*MockUserUseCase)(nil).GetTransactions), ctx, req)
 }
 
-// Login mocks base method.
-func (m *MockUserUseCase) Login(ctx context.Context, req request.PostUserLoginReq) (*response.PostLoginUserResp, error) {
+// PostLogin mocks base method.
+func (m *MockUserUseCase) PostLogin(ctx context.Context, req request.PostUserLoginReq) (*response.PostLoginUserResp, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "PostLogin", ctx, req)
 	ret0, _ := ret[0].(*response.PostLoginUserResp)
@@ -113,23 +129,97 @@ func (m *MockUserUseCase) Login(ctx context.Context, req request.PostUserLoginRe
 	return ret0, ret1
 }
 
-// Login indicates an expected call of Login.
-func (mr *MockUserUseCaseMockRecorder) Login(ctx, req interface{}) *gomock.Call {
+// PostLogin indicates an expected call of PostLogin.
+func (mr *MockUserUseCaseMockRecorder) PostLogin(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostLogin", reflect.TypeOf((*MockUserUseCase)(nil).Login), ctx, req)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostLogin", reflect.TypeOf((*MockUserUseCase)(nil).PostLogin), ctx, req)
 }
 
-// Register mocks base method.
-func (m *MockUserUseCase) Register(ctx context.Context, req request.PostUserRegisterReq) (*response.UserIDResp, error) {
+// PostPayment mocks base method.
+func (m *MockUserUseCase) PostPayment(ctx context.Context, req request.PostUserPaymentReq) (*response.PostUserPaymentResp, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "PostRegister", ctx, req)
-	ret0, _ := ret[0].(*response.UserIDResp)
+	ret := m.ctrl.Call(m, "PostPayment", ctx, req)
+	ret0, _ := ret[0].(*response.PostUserPaymentResp)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// Register indicates an expected call of Register.
-func (mr *MockUserUseCaseMockRecorder) Register(ctx, req interface{}) *gomock.Call {
+// PostPayment indicates an expected call of PostPayment.
+func (mr *MockUserUseCaseMockRecorder) PostPayment(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostRegister", reflect.TypeOf((*MockUserUseCase)(nil).Register), ctx, req)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostPayment", reflect.TypeOf((*MockUserUseCase)(nil).PostPayment), ctx, req)
+}
+
+// PostRegister mocks base method.
+func (m *MockUserUseCase) PostRegister(ctx context.Context, req request.PostUserRegisterReq) (*response.PostUserRegisterResp, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PostRegister", ctx, req)
+	ret0, _ := ret[0].(*response.PostUserRegisterResp)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PostRegister indicates an expected call of PostRegister.
+func (mr *MockUserUseCaseMockRecorder) PostRegister(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostRegister", reflect.TypeOf((*MockUserUseCase)(nil).PostRegister), ctx, req)
+}
+
+// PostTopUp mocks base method.
+func (m *MockUserUseCase) PostTopUp(ctx context.Context, req request.PostUserTopUpReq) (*response.PostUserTopUpResp, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PostTopUp", ctx, req)
+	ret0, _ := ret[0].(*response.PostUserTopUpResp)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PostTopUp indicates an expected call of PostTopUp.
+func (mr *MockUserUseCaseMockRecorder) PostTopUp(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostTopUp", reflect.TypeOf((*MockUserUseCase)(nil).PostTopUp), ctx, req)
+}
+
+// PostTransfer mocks base method.
+func (m *MockUserUseCase) PostTransfer(ctx context.Context, req request.PostUserTransferReq) (*response.PostUserTransferResp, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PostTransfer", ctx, req)
+	ret0, _ := ret[0].(*response.PostUserTransferResp)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PostTransfer indicates an expected call of PostTransfer.
+func (mr *MockUserUseCaseMockRecorder) PostTransfer(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostTransfer", reflect.TypeOf((*MockUserUseCase)(nil).PostTransfer), ctx, req)
+}
+
+// ProcessTransfer mocks base method.
+func (m *MockUserUseCase) ProcessTransfer(ctx context.Context, req request.ProcessTransferReq) error {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ProcessTransfer", ctx, req)
+	ret0, _ := ret[0].(error)
+	return ret0
+}
+
+// ProcessTransfer indicates an expected call of ProcessTransfer.
+func (mr *MockUserUseCaseMockRecorder) ProcessTransfer(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ProcessTransfer", reflect.TypeOf((*MockUserUseCase)(nil).ProcessTransfer), ctx, req)
+}
+
+// PutProfile mocks base method.
+func (m *MockUserUseCase) PutProfile(ctx context.Context, req request.PutUserProfileReq) (*response.PutUserProfileResp, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "PutProfile", ctx, req)
+	ret0, _ := ret[0].(*response.PutUserProfileResp)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// PutProfile indicates an expected call of PutProfile.
+func (mr *MockUserUseCaseMockRecorder) PutProfile(ctx, req interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PutProfile", reflect.TypeOf((*MockUserUseCase)(nil).PutProfile), ctx, req)
 }

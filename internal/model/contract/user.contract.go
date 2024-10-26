@@ -18,7 +18,6 @@ type UserRepository interface {
 type UserUseCase interface {
 	PostRegister(ctx context.Context, req request.PostUserRegisterReq) (*response.PostUserRegisterResp, error)
 	PostLogin(ctx context.Context, req request.PostUserLoginReq) (*response.PostLoginUserResp, error)
-	GetInfo(ctx context.Context, req request.GetUserInfoReq) (*response.GetUserInfoResp, error)
 	PostTopUp(ctx context.Context, req request.PostUserTopUpReq) (*response.PostUserTopUpResp, error)
 	PostPayment(ctx context.Context, req request.PostUserPaymentReq) (*response.PostUserPaymentResp, error)
 	PostTransfer(ctx context.Context, req request.PostUserTransferReq) (*response.PostUserTransferResp, error)

@@ -41,7 +41,6 @@ func InitRoutes(
 	v1Group.POST("/register", userHandler.PostRegister)
 
 	v1Group.Use(jwtMid.UserAuth())
-	v1Group.GET("", userHandler.GetInfo)
 	v1Group.POST("/topup", userHandler.PostTopUp)
 	v1Group.POST("/pay", userHandler.PostPayment)
 	v1Group.POST("/transfer", userHandler.PostTransfer)
