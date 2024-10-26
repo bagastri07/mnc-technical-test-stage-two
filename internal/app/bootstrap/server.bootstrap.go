@@ -5,6 +5,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/util"
 	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
@@ -129,8 +130,9 @@ func serveAsynqMonitoring() {
 	r.PathPrefix(h.RootPath()).Handler(h)
 
 	srv := &http.Server{
-		Handler: r,
-		Addr:    ":4050",
+		Handler:           r,
+		Addr:              ":4050",
+		ReadHeaderTimeout: 5 * time.Second,
 	}
 
 	// Go to http://localhost:4050/monitoring to see asynqmon homepage.
