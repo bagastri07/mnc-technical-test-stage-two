@@ -3,11 +3,11 @@ package user
 import (
 	"net/http"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/constant"
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/util"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/claim"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/request"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/response"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/constant"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/util"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/claim"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/request"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/response"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -26,7 +26,7 @@ func (h *Handler) GetInfo(c *gin.Context) {
 		return
 	}
 
-	req.Username = userClaim.Username
+	req.Username = userClaim.PhoneNumber
 
 	resp, err := h.userUseCase.GetInfo(ctx, req)
 	if err != nil {

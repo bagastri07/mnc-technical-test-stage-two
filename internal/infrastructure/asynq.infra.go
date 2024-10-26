@@ -1,14 +1,14 @@
 package infrastructure
 
 import (
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
 	"github.com/hibiken/asynq"
 	"github.com/redis/go-redis/v9"
 	"github.com/sirupsen/logrus"
 )
 
 func InitializeAsynqServer() *asynq.Server {
-	redisConn := getRedisConn()
+	redisConn := GetAsynqRedisConn()
 	server := asynq.NewServer(
 		redisConn,
 		asynq.Config{
@@ -25,14 +25,14 @@ func InitializeAsynqServer() *asynq.Server {
 }
 
 func InitializeAsynqClient() *asynq.Client {
-	redisConn := getRedisConn()
+	redisConn := GetAsynqRedisConn()
 	client := asynq.NewClient(redisConn)
 
 	return client
 }
 
 func InitializeAsynqScheduler() *asynq.Scheduler {
-	redisConn := getRedisConn()
+	redisConn := GetAsynqRedisConn()
 	scheduler := asynq.NewScheduler(
 		redisConn,
 		&asynq.SchedulerOpts{},
@@ -41,7 +41,7 @@ func InitializeAsynqScheduler() *asynq.Scheduler {
 	return scheduler
 }
 
-func getRedisConn() asynq.RedisConnOpt {
+func GetAsynqRedisConn() asynq.RedisConnOpt {
 
 	opts, err := redis.ParseURL(config.Env.Redis.WorkerCacheHost)
 	if err != nil {

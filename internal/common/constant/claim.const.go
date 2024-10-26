@@ -1,10 +1,10 @@
 package constant
 
 const (
-	IDKey       CtxKey = "id"
-	UsernameKey CtxKey = "username"
+	IDKey          CtxKey = "id"
+	PhoneNumberKey CtxKey = "phone_number"
 )
 
 var (
-	UserClaimKeys = []CtxKey{IDKey, UsernameKey}
+	UserClaimKeys = []CtxKey{IDKey, PhoneNumberKey}
 )

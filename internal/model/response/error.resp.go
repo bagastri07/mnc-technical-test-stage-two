@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/constant"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/customerror"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/constant"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/customerror"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
@@ -29,9 +29,7 @@ func HandleError(c *gin.Context, err error) {
 		fErr = processDefaultErr(err)
 	}
 
-	c.JSON(fErr.Code, ErrorResp{
-		Error: fErr,
-	})
+	c.JSON(fErr.Code, fErr)
 }
 
 func processDefaultErr(err error) *customerror.CustomError {

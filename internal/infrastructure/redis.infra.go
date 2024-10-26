@@ -3,7 +3,7 @@ package infrastructure
 import (
 	"context"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
 	"github.com/redis/go-redis/v9"
 	"github.com/sirupsen/logrus"
 )

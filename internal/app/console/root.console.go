@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/app/bootstrap"
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/app/bootstrap"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
 	runtime "github.com/banzaicloud/logrus-runtime-formatter"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

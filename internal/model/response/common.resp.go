@@ -4,7 +4,12 @@ type MessageResp struct {
 	Message string `json:"message"`
 }
 
-type TokenResponse struct {
-	Token     string `json:"token"`
-	ExpiredAt string `json:"expired_at"`
+type PostLoginUserResp struct {
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+}
+
+type CommonResultResp struct {
+	Status string `json:"status"`
+	Result any    `json:"result"`
 }

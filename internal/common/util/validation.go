@@ -71,7 +71,7 @@ func MaxIf(fl validator.FieldLevel) bool {
 	return true
 }
 
-// AddValidation Register validator for struct
+// AddValidation PostRegister validator for struct
 func AddValidation() {
 	// register the validation in main function
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {

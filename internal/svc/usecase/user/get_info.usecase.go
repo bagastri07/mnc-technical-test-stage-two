@@ -3,10 +3,9 @@ package user
 import (
 	"context"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/util"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/request"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/response"
-	"github.com/guregu/null/v5"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/util"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/request"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/response"
 	"github.com/sirupsen/logrus"
 )
 
@@ -17,15 +16,15 @@ func (u *UseCase) GetInfo(ctx context.Context, req request.GetUserInfoReq) (*res
 		})
 	)
 
-	user, err := u.userRepository.FindByUsername(ctx, req.Username)
+	user, err := u.userRepository.FindByPhoneNumber(ctx, req.Username)
 	if err != nil {
 		logger.Error(err)
 		return nil, err
 	}
 
 	return &response.GetUserInfoResp{
-		ID:       user.ID,
-		Username: user.Username,
-		FullName: null.NewString(user.FullName.String, user.FullName.Valid),
+		ID: user.ID,
+		//Username: user.FirstName,
+		//FullName: null.NewString(user.FullName.String, user.FullName.Valid),
 	}, nil
 }

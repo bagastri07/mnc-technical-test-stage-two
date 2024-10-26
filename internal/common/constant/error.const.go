@@ -3,7 +3,7 @@ package constant
 import (
 	"net/http"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/customerror"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/customerror"
 )
 
 var (
@@ -19,13 +19,21 @@ var (
 		Code:    http.StatusNotFound,
 		Message: "Data Not Found",
 	}
-	ErrUnauthorized = &customerror.CustomError{
+	ErrUnauthenticated = &customerror.CustomError{
 		Code:    http.StatusUnauthorized,
-		Message: "Unauthorized",
+		Message: "Unauthenticated",
 	}
-	ErrUserAlreadyExist = &customerror.CustomError{
+	ErrPhoneNumberAlreadyRegistered = &customerror.CustomError{
 		Code:    http.StatusBadRequest,
-		Message: "User Already Exist",
+		Message: "Phone Number already registered",
+	}
+	ErrPhoneNumberAndPINDoesntMatch = &customerror.CustomError{
+		Code:    http.StatusUnauthorized,
+		Message: "Phone Number and PIN doesn’t match",
+	}
+	ErrBalanceIsNotEnough = &customerror.CustomError{
+		Code:    http.StatusBadRequest,
+		Message: "Balance is not enough",
 	}
 )
 

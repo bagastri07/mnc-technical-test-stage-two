@@ -8,9 +8,9 @@ import (
 	context "context"
 	reflect "reflect"
 
-	entity "github.com/bagastri07/gin-boilerplate-service/internal/model/entity"
-	request "github.com/bagastri07/gin-boilerplate-service/internal/model/request"
-	response "github.com/bagastri07/gin-boilerplate-service/internal/model/response"
+	entity "github.com/bagastri07/mnc-technical-test-stage-two/internal/model/entity"
+	request "github.com/bagastri07/mnc-technical-test-stage-two/internal/model/request"
+	response "github.com/bagastri07/mnc-technical-test-stage-two/internal/model/response"
 	gomock "github.com/golang/mock/gomock"
 )
 
@@ -38,9 +38,9 @@ func (m *MockUserRepository) EXPECT() *MockUserRepositoryMockRecorder {
 }
 
 // FindByUsername mocks base method.
-func (m *MockUserRepository) FindByUsername(ctx context.Context, username string) (*entity.User, error) {
+func (m *MockUserRepository) FindByPhoneNumber(ctx context.Context, username string) (*entity.User, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "FindByUsername", ctx, username)
+	ret := m.ctrl.Call(m, "FindByPhoneNumber", ctx, username)
 	ret0, _ := ret[0].(*entity.User)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
@@ -49,7 +49,7 @@ func (m *MockUserRepository) FindByUsername(ctx context.Context, username string
 // FindByUsername indicates an expected call of FindByUsername.
 func (mr *MockUserRepositoryMockRecorder) FindByUsername(ctx, username interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByUsername", reflect.TypeOf((*MockUserRepository)(nil).FindByUsername), ctx, username)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindByPhoneNumber", reflect.TypeOf((*MockUserRepository)(nil).FindByPhoneNumber), ctx, username)
 }
 
 // Upsert mocks base method.
@@ -105,10 +105,10 @@ func (mr *MockUserUseCaseMockRecorder) GetInfo(ctx, req interface{}) *gomock.Cal
 }
 
 // Login mocks base method.
-func (m *MockUserUseCase) Login(ctx context.Context, req request.UserLoginReq) (*response.TokenResponse, error) {
+func (m *MockUserUseCase) Login(ctx context.Context, req request.PostUserLoginReq) (*response.PostLoginUserResp, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Login", ctx, req)
-	ret0, _ := ret[0].(*response.TokenResponse)
+	ret := m.ctrl.Call(m, "PostLogin", ctx, req)
+	ret0, _ := ret[0].(*response.PostLoginUserResp)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -116,13 +116,13 @@ func (m *MockUserUseCase) Login(ctx context.Context, req request.UserLoginReq) (
 // Login indicates an expected call of Login.
 func (mr *MockUserUseCaseMockRecorder) Login(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Login", reflect.TypeOf((*MockUserUseCase)(nil).Login), ctx, req)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostLogin", reflect.TypeOf((*MockUserUseCase)(nil).Login), ctx, req)
 }
 
 // Register mocks base method.
-func (m *MockUserUseCase) Register(ctx context.Context, req request.UserRegisterReq) (*response.UserIDResp, error) {
+func (m *MockUserUseCase) Register(ctx context.Context, req request.PostUserRegisterReq) (*response.UserIDResp, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Register", ctx, req)
+	ret := m.ctrl.Call(m, "PostRegister", ctx, req)
 	ret0, _ := ret[0].(*response.UserIDResp)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
@@ -131,5 +131,5 @@ func (m *MockUserUseCase) Register(ctx context.Context, req request.UserRegister
 // Register indicates an expected call of Register.
 func (mr *MockUserUseCaseMockRecorder) Register(ctx, req interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Register", reflect.TypeOf((*MockUserUseCase)(nil).Register), ctx, req)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PostRegister", reflect.TypeOf((*MockUserUseCase)(nil).Register), ctx, req)
 }

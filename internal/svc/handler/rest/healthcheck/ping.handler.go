@@ -3,8 +3,8 @@ package healthcheck
 import (
 	"net/http"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
-	"github.com/bagastri07/gin-boilerplate-service/internal/model/response"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/model/response"
 	"github.com/gin-gonic/gin"
 )
 

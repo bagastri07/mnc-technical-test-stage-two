@@ -3,7 +3,7 @@ package util
 import (
 	"context"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/constant"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/constant"
 	"gorm.io/gorm"
 )
 

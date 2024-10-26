@@ -1,7 +1,7 @@
 package console
 
 import (
-	"github.com/bagastri07/gin-boilerplate-service/internal/app/bootstrap"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/app/bootstrap"
 	"github.com/spf13/cobra"
 )
 

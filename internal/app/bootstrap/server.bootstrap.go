@@ -3,20 +3,26 @@ package bootstrap
 import (
 	"context"
 	"errors"
+	"log"
 	"net/http"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/util"
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
-	"github.com/bagastri07/gin-boilerplate-service/internal/infrastructure"
-	"github.com/bagastri07/gin-boilerplate-service/internal/svc/handler/rest"
-	healthCheckHdr "github.com/bagastri07/gin-boilerplate-service/internal/svc/handler/rest/healthcheck"
-	"github.com/bagastri07/gin-boilerplate-service/internal/svc/handler/rest/middleware"
-	userHdr "github.com/bagastri07/gin-boilerplate-service/internal/svc/handler/rest/user"
-	userRepo "github.com/bagastri07/gin-boilerplate-service/internal/svc/repository/user"
-	userUC "github.com/bagastri07/gin-boilerplate-service/internal/svc/usecase/user"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/util"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/infrastructure"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/handler/rest"
+	healthCheckHdr "github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/handler/rest/healthcheck"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/handler/rest/middleware"
+	userHdr "github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/handler/rest/user"
+	userRepo "github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/repository/user"
+	userBalanceRepo "github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/repository/userbalance"
+	userTransactionRepo "github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/repository/usertransaction"
+	userUC "github.com/bagastri07/mnc-technical-test-stage-two/internal/svc/usecase/user"
 	"github.com/common-nighthawk/go-figure"
 	"github.com/go-gomail/gomail"
+	"github.com/go-redsync/redsync/v4"
+	"github.com/gorilla/mux"
 	"github.com/hibiken/asynq"
+	"github.com/hibiken/asynqmon"
 	"github.com/redis/go-redis/v9"
 	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"
@@ -25,6 +31,7 @@ import (
 type appServer struct {
 	PostgresDB    *gorm.DB
 	RedisClient   *redis.Client
+	RedSync       *redsync.Redsync
 	HTPPGinServer *http.Server
 	AsynqClient   *asynq.Client
 	GomailDialer  *gomail.Dialer
@@ -38,11 +45,13 @@ func greetingServer() {
 func StartServer() {
 	greetingServer()
 
+	redisClient := infrastructure.InitializeRedisConn()
 	app := appServer{
 		HTPPGinServer: infrastructure.InitializeGinServer(),
 		PostgresDB:    infrastructure.InitializePostgresConn(),
-		RedisClient:   infrastructure.InitializeRedisConn(),
+		RedisClient:   redisClient,
 		AsynqClient:   infrastructure.InitializeAsynqClient(),
+		RedSync:       infrastructure.InitializeRedSyncConn(redisClient),
 	}
 
 	pgDB, err := app.PostgresDB.DB()
@@ -51,10 +60,19 @@ func StartServer() {
 	// init repositories
 	userRepository := userRepo.New().
 		WithPostgresqlDB(app.PostgresDB)
+	userBalanceRepository := userBalanceRepo.New().
+		WithPostgresqlDB(app.PostgresDB)
+	userTransactionRepository := userTransactionRepo.New().
+		WithPostgresqlDB(app.PostgresDB)
 
 	// init useCases
 	userUseCase := userUC.New().
-		WithUserRepository(userRepository)
+		WithPostgresqlDB(app.PostgresDB).
+		WithAsynqClient(app.AsynqClient).
+		WithRedSync(app.RedSync).
+		WithUserRepository(userRepository).
+		WithUserBalanceRepository(userBalanceRepository).
+		WithUserTransactionRepository(userTransactionRepository)
 
 	// init handlers
 	healthCheckHandler := healthCheckHdr.New()
@@ -78,6 +96,12 @@ func StartServer() {
 		}
 	}()
 
+	go func() {
+		if config.Env.Env != "production" {
+			serveAsynqMonitoring()
+		}
+	}()
+
 	wait := util.GracefulShutdown(context.Background(), config.Env.App.GracefulShutdownTimeOut, map[string]util.Operation{
 		"postgres connection": func(ctx context.Context) error {
 			return pgDB.Close()
@@ -93,4 +117,22 @@ func StartServer() {
 		},
 	})
 	<-wait
+}
+
+func serveAsynqMonitoring() {
+	h := asynqmon.New(asynqmon.Options{
+		RootPath:     "/monitoring", // RootPath specifies the root for asynqmon app
+		RedisConnOpt: infrastructure.GetAsynqRedisConn(),
+	})
+
+	r := mux.NewRouter()
+	r.PathPrefix(h.RootPath()).Handler(h)
+
+	srv := &http.Server{
+		Handler: r,
+		Addr:    ":4050",
+	}
+
+	// Go to http://localhost:4050/monitoring to see asynqmon homepage.
+	log.Fatal(srv.ListenAndServe())
 }

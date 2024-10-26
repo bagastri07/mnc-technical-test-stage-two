@@ -34,9 +34,10 @@ type App struct {
 }
 
 type JWT struct {
-	UserSecret string        `mapstructure:"user_secret"`
-	Timeout    time.Duration `mapstructure:"timeout"`
-	MaxRefresh time.Duration `mapstructure:"max_refresh"`
+	UserSecret        string        `mapstructure:"user_secret"`
+	UserRefreshSecret string        `mapstructure:"user_refresh_secret"`
+	Timeout           time.Duration `mapstructure:"timeout"`
+	RefreshTimeOut    time.Duration `mapstructure:"refresh_timout"`
 }
 
 type Crypto struct {

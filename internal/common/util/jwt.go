@@ -1,7 +1,9 @@
 package util
 
 import (
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/constant"
+	"errors"
+
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/constant"
 	"github.com/golang-jwt/jwt/v5"
 )
 
@@ -26,11 +28,14 @@ func ValidateJWT[T jwt.Claims](tokenString string, secretKey []byte, claims T) (
 	})
 
 	if err != nil {
+		if errors.Is(err, jwt.ErrTokenExpired) {
+			return claims, constant.ErrUnauthenticated
+		}
 		return claims, err
 	}
 
 	if !token.Valid {
-		return claims, constant.ErrUnauthorized
+		return claims, constant.ErrUnauthenticated
 	}
 
 	if c, ok := token.Claims.(T); ok {

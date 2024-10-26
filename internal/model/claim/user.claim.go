@@ -6,7 +6,7 @@ import (
 )
 
 type User struct {
-	ID       uuid.UUID `json:"id"`
-	Username string    `json:"username"`
+	ID          uuid.UUID `json:"id"`
+	PhoneNumber string    `json:"phone_number"`
 	jwt.RegisteredClaims
 }

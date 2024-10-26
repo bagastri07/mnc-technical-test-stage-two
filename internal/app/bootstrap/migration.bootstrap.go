@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/common/util"
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/common/util"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
 	_ "github.com/lib/pq" // postgres driver
 	"github.com/pressly/goose/v3"
 )

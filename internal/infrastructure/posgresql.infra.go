@@ -3,7 +3,7 @@ package infrastructure
 import (
 	"time"
 
-	"github.com/bagastri07/gin-boilerplate-service/internal/config"
+	"github.com/bagastri07/mnc-technical-test-stage-two/internal/config"
 	"github.com/jpillora/backoff"
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/postgres"
