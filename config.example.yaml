@@ -1,0 +1,56 @@
+env: "development"
+app:
+  name: "gin-boilerplate"
+  quote: "nothing is impossible when you really try it"
+  log_level: "debug"
+  port: "4040"
+  graceful_shutdown_timeout: "1m"
+jwt:
+  user_secret: "Yx3sxOKa43dxff452dtgfsdf434546"
+  timeout: "100h"
+  max_refresh: "200h"
+crypto:
+  salt: "dd344441f937dsxtt"
+postgres:
+  dsn: "postgres://user:pass@localhost:5432/dbname?sslmode=disable"
+  log_level: "info" # log level: silent, warn, info, error
+  max_idle_cons: 10
+  max_open_cons: 50
+  conn_max_lifetime: "1h"
+  ping_interval: "5000ms"
+  retry_attempts: 3
+redis:
+  cache_host: "redis://@localhost:6379/0"
+  worker_cache_host: "redis://@localhost:6379/1"
+  dial_timeout: "2s"
+  write_timeout: "4s"
+  read_timeout: "4s"
+aws:
+  region: "ap-southeast-1"
+  access_key: "access-key"
+  secret_key: "secret-key"
+  bucket: "bucket"
+  signed_expiration: "10m"
+asynq:
+  worker_concurrency: 10
+  retention: "2m"
+  max_retry: 5
+twilio:
+  account_sid: "sid"
+  auth_token: "token"
+  service_sid: "sid"
+mailer:
+  host: 'smtp.gmail.com'
+  port: 587
+  username: 'no-reply@mail.com'
+  password: 'password'
+http:
+  timeout: "10s"
+  disable_keep_alives: false
+  max_cons_per_host: 5
+  max_idle_cons: 3
+  max_idle_cons_per_host: 3
+  idle_conn_timeout: "60s"
+  tls_handshake_timeout: "10s"
+  dial_context_timeout: "30s"
+  dial_context_keep_alive: "30s"

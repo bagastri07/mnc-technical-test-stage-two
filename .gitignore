@@ -1,0 +1,9 @@
+coverage.out
+config.yaml
+profile.cov
+bin/
+.idea/
+.vendor/
+tmp/
+.vscode
+.pem
