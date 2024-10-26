@@ -1,0 +1,992 @@
+{
+	"info": {
+		"_postman_id": "a5316f07-c3b7-4591-b4d8-6abaf4a8f12c",
+		"name": "MNC-TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26138456",
+		"_collection_link": "https://warped-escape-642685.postman.co/workspace/mnc-test~0cb05396-cfc4-4f27-8574-70d83021dc71/collection/26138456-a5316f07-c3b7-4591-b4d8-6abaf4a8f12c?action=share&source=collection_link&creator=26138456"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/register",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:14:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": {\n        \"user_id\": \"a950e33c-c3e4-4f58-b11a-f8794fe57d84\",\n        \"first_name\": \"Bagas\",\n        \"last_name\": \"Tri\",\n        \"phone_number\": \"+6285346655575\",\n        \"address\": \"Jl Cinta Abadi\",\n        \"created_at\": \"2024-10-26T12:14:39.035128+07:00\"\n    }\n}"
+						},
+						{
+							"name": "400: Phone Number Already Registed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/register",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 08:48:50 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Phone Number already registered\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/register",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:14:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1YjQwMDFlLTE4ODctNDM3MC1hNzQ0LWE5NjhhOWFiNWFlZSIsInBob25lX251bWJlciI6Iis2Mjg1MzQ2NjU1NTc1IiwiaXNzIjoibW5jLXRlc3QiLCJleHAiOjE3Mjk5MzQ3MjZ9.0yAb2f11m1BE-2ZAMPdyjcEccH3s8CSTdD6yJ06rd7o\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1YjQwMDFlLTE4ODctNDM3MC1hNzQ0LWE5NjhhOWFiNWFlZSIsInBob25lX251bWJlciI6Iis2Mjg1MzQ2NjU1NTc1IiwiaXNzIjoibW5jLXRlc3QiLCJleHAiOjE3MzA2NTM4MjZ9.a9l2n5NUfQIig3kMKZbmpjcozdA56-WUs9MyDH-YWV0\"\n    }\n}"
+						},
+						{
+							"name": "401: Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"1234156\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:52:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthenticated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Top Up",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 3333\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/topup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"topup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/register",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:14:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": {\n        \"user_id\": \"a950e33c-c3e4-4f58-b11a-f8794fe57d84\",\n        \"first_name\": \"Bagas\",\n        \"last_name\": \"Tri\",\n        \"phone_number\": \"+6285346655575\",\n        \"address\": \"Jl Cinta Abadi\",\n        \"created_at\": \"2024-10-26T12:14:39.035128+07:00\"\n    }\n}"
+						},
+						{
+							"name": "401: Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"1234156\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:52:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthenticated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Payment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 3333,\n    \"remarks\": \"Untuk Bayar SPP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/pay",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"pay"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/register",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:14:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": {\n        \"user_id\": \"a950e33c-c3e4-4f58-b11a-f8794fe57d84\",\n        \"first_name\": \"Bagas\",\n        \"last_name\": \"Tri\",\n        \"phone_number\": \"+6285346655575\",\n        \"address\": \"Jl Cinta Abadi\",\n        \"created_at\": \"2024-10-26T12:14:39.035128+07:00\"\n    }\n}"
+						},
+						{
+							"name": "401: Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"1234156\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:52:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthenticated\"\n}"
+						},
+						{
+							"name": "400: Balance Is Not Enough",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 3333,\n    \"remarks\": \"Untuk Bayar SPP\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/pay",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"pay"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 08:48:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Balance is not enough\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"target_user_id\": \"bed371a9-f0e6-4a51-8962-9ade64d94fc6\",\n    \"amount\": 3333,\n    \"remarks\": \"Untuk Bayar SPP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/transfer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"transfer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri\",\n    \"phone_number\": \"+6285346655575\",\n    \"address\": \"Jl Cinta Abadi\",\n    \"pin\": \"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/register",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:14:39 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": {\n        \"user_id\": \"a950e33c-c3e4-4f58-b11a-f8794fe57d84\",\n        \"first_name\": \"Bagas\",\n        \"last_name\": \"Tri\",\n        \"phone_number\": \"+6285346655575\",\n        \"address\": \"Jl Cinta Abadi\",\n        \"created_at\": \"2024-10-26T12:14:39.035128+07:00\"\n    }\n}"
+						},
+						{
+							"name": "401: Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"1234156\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/login",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:52:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthenticated\"\n}"
+						},
+						{
+							"name": "400: Balance Is Not Enough",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\": 3333,\n    \"remarks\": \"Untuk Bayar SPP\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/pay",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"pay"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 08:48:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"message\": \"Balance is not enough\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/v1/transactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401: Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"1234156\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/login",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:52:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthenticated\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/v1/transactions",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 11:17:54 GMT"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": [\n        {\n            \"top_up_id\": \"3b18c083-76d6-42cc-9586-2b4a9a06ff51\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 3333,\n            \"balance_after\": 6666,\n            \"created_at\": \"2024-10-26T18:14:44.440274+07:00\"\n        },\n        {\n            \"transfer_id\": \"c94558a9-987d-4d0c-8dd2-9010ea61e9d7\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:50:40.701629+07:00\"\n        },\n        {\n            \"transfer_id\": \"73d30f42-a199-4a61-8ef9-06f3bd917f50\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:50:40.505207+07:00\"\n        },\n        {\n            \"transfer_id\": \"211b4707-f93f-44d2-a686-209cd930e41a\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:50:40.32188+07:00\"\n        },\n        {\n            \"transfer_id\": \"8b60b35f-03bf-4e55-bd44-44da8c7083cb\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:50:40.262638+07:00\"\n        },\n        {\n            \"transfer_id\": \"7f63fb84-6ce0-4856-9f7a-8a6cd5b4fa9c\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 6666,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:50:39.533678+07:00\"\n        },\n        {\n            \"transfer_id\": \"2b6e307d-4630-417b-b337-0f051190a837\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 9999,\n            \"balance_after\": 6666,\n            \"created_at\": \"2024-10-26T17:50:39.485864+07:00\"\n        },\n        {\n            \"transfer_id\": \"fec133d8-9ec7-4bfe-9f5a-25267b420095\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 13332,\n            \"balance_after\": 9999,\n            \"created_at\": \"2024-10-26T17:50:39.437487+07:00\"\n        },\n        {\n            \"transfer_id\": \"0235768c-ae75-48a5-82fc-c7952bed02e2\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 16665,\n            \"balance_after\": 13332,\n            \"created_at\": \"2024-10-26T17:50:39.349812+07:00\"\n        },\n        {\n            \"top_up_id\": \"f9363c0c-68d6-4068-a780-fe86213a59d8\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 13332,\n            \"balance_after\": 16665,\n            \"created_at\": \"2024-10-26T17:50:37.072278+07:00\"\n        },\n        {\n            \"top_up_id\": \"6b93b675-786a-493c-aac3-1a3cc5f20fce\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 9999,\n            \"balance_after\": 13332,\n            \"created_at\": \"2024-10-26T17:50:36.413015+07:00\"\n        },\n        {\n            \"top_up_id\": \"88f6f6cb-c61d-4c50-a3cd-e69383ff7420\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 6666,\n            \"balance_after\": 9999,\n            \"created_at\": \"2024-10-26T17:50:35.754254+07:00\"\n        },\n        {\n            \"top_up_id\": \"ca8bdfd2-7032-4bbc-8d90-d27cab109fcb\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 3333,\n            \"balance_after\": 6666,\n            \"created_at\": \"2024-10-26T17:50:35.015679+07:00\"\n        },\n        {\n            \"top_up_id\": \"df4ae0f0-2db3-455a-8018-31b7351700c4\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:50:34.187759+07:00\"\n        },\n        {\n            \"transfer_id\": \"76828887-1645-4422-a056-7bbdc52f56b9\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T17:49:31.113451+07:00\"\n        },\n        {\n            \"transfer_id\": \"50226040-0a97-4a6a-abed-18c40e6b9b61\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 3333,\n            \"balance_after\": 0,\n            \"created_at\": \"2024-10-26T17:49:30.122758+07:00\"\n        },\n        {\n            \"transfer_id\": \"28bb3557-7c86-4f44-89b9-f815c04e9363\",\n            \"status\": \"FAILED\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 3333,\n            \"balance_after\": 0,\n            \"created_at\": \"2024-10-26T17:40:40.656466+07:00\"\n        },\n        {\n            \"transfer_id\": \"194837be-4789-400d-98f2-e8e061c042c6\",\n            \"status\": \"FAILED\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 3333,\n            \"balance_after\": 0,\n            \"created_at\": \"2024-10-26T17:34:52.018093+07:00\"\n        },\n        {\n            \"payment_id\": \"e28c12c9-3af7-497b-b0b1-749d233ca240\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 9999,\n            \"balance_after\": 6666,\n            \"created_at\": \"2024-10-26T16:23:06.198483+07:00\"\n        },\n        {\n            \"payment_id\": \"da8b8633-ee06-4468-94f2-42a234d123ab\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 13332,\n            \"balance_after\": 9999,\n            \"created_at\": \"2024-10-26T16:23:04.804369+07:00\"\n        },\n        {\n            \"payment_id\": \"70faaf1f-e00d-49bc-bccc-e170aaaa8750\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 16665,\n            \"balance_after\": 13332,\n            \"created_at\": \"2024-10-26T16:23:02.985016+07:00\"\n        },\n        {\n            \"top_up_id\": \"06ae17fd-1646-424e-a1fc-b0c4803843d8\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 13332,\n            \"balance_after\": 16665,\n            \"created_at\": \"2024-10-26T16:22:56.660221+07:00\"\n        },\n        {\n            \"top_up_id\": \"6a54fb97-4f17-4bc6-9287-2d1b47d465d9\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 9999,\n            \"balance_after\": 13332,\n            \"created_at\": \"2024-10-26T16:22:56.103518+07:00\"\n        },\n        {\n            \"top_up_id\": \"fdf2d2dc-b22c-43e9-abf3-4addfb670457\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 6666,\n            \"balance_after\": 9999,\n            \"created_at\": \"2024-10-26T16:22:55.509344+07:00\"\n        },\n        {\n            \"top_up_id\": \"f9c928ca-8381-4e2d-885e-43ee7d195859\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 3333,\n            \"balance_after\": 6666,\n            \"created_at\": \"2024-10-26T16:22:54.798912+07:00\"\n        },\n        {\n            \"top_up_id\": \"635ad56a-490c-4fe9-8b1c-14b3a804b88a\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T16:22:53.988068+07:00\"\n        },\n        {\n            \"payment_id\": \"c65abb5c-72e0-493b-8f94-d67dace46dc4\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 3333,\n            \"balance_after\": 0,\n            \"created_at\": \"2024-10-26T16:10:54.824807+07:00\"\n        },\n        {\n            \"top_up_id\": \"603d4159-f9e5-430e-9c39-f1262775a39d\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T16:10:47.794248+07:00\"\n        },\n        {\n            \"payment_id\": \"946de8b1-a6bd-4058-837f-66ed93f8a223\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"DEBIT\",\n            \"amount\": 3333,\n            \"remarks\": \"Untuk Bayar SPP\",\n            \"balance_before\": 3333,\n            \"balance_after\": 0,\n            \"created_at\": \"2024-10-26T15:48:18.029149+07:00\"\n        },\n        {\n            \"top_up_id\": \"d80f4cae-89e0-449e-a187-5bafb5e9d232\",\n            \"status\": \"SUCCESS\",\n            \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n            \"transaction_type\": \"CREDIT\",\n            \"amount\": 3333,\n            \"remarks\": null,\n            \"balance_before\": 0,\n            \"balance_after\": 3333,\n            \"created_at\": \"2024-10-26T15:46:32.236916+07:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{user-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri W\",\n    \"address\": \"Jl Cinta Abadi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/profile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401: Unauthenticated",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"+6285346655575\",\n    \"pin\": \"1234156\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:4040/v1/login",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "4040",
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 05:52:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"message\": \"Unauthenticated\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Bagas\",\n    \"last_name\": \"Tri W\",\n    \"address\": \"Jl Cinta Abadi\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/v1/profile",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"v1",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 26 Oct 2024 11:26:47 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "196"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"SUCCESS\",\n    \"result\": {\n        \"user_id\": \"05b4001e-1887-4370-a744-a968a9ab5aee\",\n        \"first_name\": \"Bagas\",\n        \"last_name\": \"Tri W\",\n        \"address\": \"Jl Cinta Abadi\",\n        \"updated_at\": \"2024-10-26T18:26:47.243494+07:00\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
