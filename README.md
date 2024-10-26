@@ -25,6 +25,8 @@ make test
 ```
 ## Asynq Monitong
 After you run the server you can access `http://localhost:4050/monitoring`
+![image](https://github.com/user-attachments/assets/f36e8c86-a540-42c7-8a1c-177438df6149)
+
 
 ## TODO
 - Increase code coverage by add more unit test.
